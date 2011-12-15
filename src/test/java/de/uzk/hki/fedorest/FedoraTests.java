@@ -21,11 +21,11 @@ public class FedoraTests {
 	}
 	
 	@Test
-	public void testPurgeObject() {
+	public void testPurgeObject() throws FedoraException {
 	
 		try {
 			fedora.ingest().param("pid","test:1234").execute();
-		} catch (IllegalArgumentException e) {
+		} catch (FedoraException e) {
 			// do nothing, object probably already exists in fedora
 		}
 		
@@ -35,7 +35,7 @@ public class FedoraTests {
 	}
 
 	@Test
-	public void testIngest() {
+	public void testIngest() throws FedoraException {
 		
 		Object result = fedora.ingest().param("pid","test:1234")
 			.param("label","Testobjekt").param("ownerId",FEDORA_USER)
@@ -47,11 +47,11 @@ public class FedoraTests {
 	}
 	
 	@Test
-	public void testAddRelationship() {
+	public void testAddRelationship() throws FedoraException {
 		
 		try {
 			fedora.ingest().param("pid","test:1234").execute();
-		} catch (IllegalArgumentException e) {
+		} catch (FedoraException e) {
 			// do nothing, object probably already exists in fedora
 		}
 		
@@ -67,11 +67,11 @@ public class FedoraTests {
 	}
 	
 	@Test
-	public void testPurgeRelationship() {
+	public void testPurgeRelationship() throws FedoraException {
 		
 		try {
 			fedora.ingest().param("pid","test:1234").execute();
-		} catch (IllegalArgumentException e) {
+		} catch (FedoraException e) {
 			// do nothing, object probably already exists in fedora
 		}
 		
@@ -93,11 +93,11 @@ public class FedoraTests {
 	}
 	
 	@Test
-	public void testAddDatastream() {
+	public void testAddDatastream() throws FedoraException {
 		
 		try {
 			fedora.ingest().param("pid","test:1234").execute();
-		} catch (IllegalArgumentException e) {
+		} catch (FedoraException e) {
 			// do nothing, object probably already exists in fedora
 		}
 		
@@ -112,11 +112,11 @@ public class FedoraTests {
 	}
 	
 	@Test
-	public void testModifyObject() {
+	public void testModifyObject() throws FedoraException {
 		
 		try {
 			fedora.ingest().param("pid","test:1234").execute();
-		} catch (IllegalArgumentException e) {
+		} catch (FedoraException e) {
 			// do nothing, object probably already exists in fedora
 		}
 		
@@ -130,11 +130,11 @@ public class FedoraTests {
 	}
 	
 	@Test
-	public void testModifyDatastream() {
+	public void testModifyDatastream() throws FedoraException {
 		
 		try {
 			fedora.ingest().param("pid","test:1234").execute();
-		} catch (IllegalArgumentException e) {
+		} catch (FedoraException e) {
 			// do nothing, object probably already exists in fedora
 		}
 		
@@ -155,11 +155,11 @@ public class FedoraTests {
 	}
 	
 	@Test
-	public void testPurgeDatastream() {
+	public void testPurgeDatastream() throws FedoraException {
 		
 		try {
 			fedora.ingest().param("pid","test:1234").execute();
-		} catch (IllegalArgumentException e) {
+		} catch (FedoraException e) {
 			// do nothing, object probably already exists in fedora
 		}
 		

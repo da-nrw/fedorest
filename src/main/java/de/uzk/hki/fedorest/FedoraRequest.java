@@ -1,6 +1,7 @@
 package de.uzk.hki.fedorest;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import javax.ws.rs.core.MultivaluedMap;
@@ -31,15 +32,19 @@ public class FedoraRequest {
 	}
 	
 	public FedoraRequest param(String name, String value) {
-		this.params.putSingle(URLEncoder.encode(name), URLEncoder.encode(value));
+		try {
+			this.params.putSingle(URLEncoder.encode(name,"UTF-8"), URLEncoder.encode(value,"UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
-	public String execute() {
+	public String execute() throws FedoraException {
 		return execute(null);
 	}
 	
-	public String execute(File content) {
+	public String execute(File content) throws FedoraException {
 		
 		String tempMethod = new String(method);
 		
@@ -77,7 +82,7 @@ public class FedoraRequest {
 					throw new IllegalArgumentException("Method not supported");
 			}
 		} catch(UniformInterfaceException e) {
-			throw new IllegalArgumentException("Fedora says:" + e.getResponse().getEntity(String.class), e);
+			throw new FedoraException("Fedora says:" + e.getResponse().getEntity(String.class), e);
 		}
 		
 		return result;
