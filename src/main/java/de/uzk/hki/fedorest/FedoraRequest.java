@@ -82,7 +82,7 @@ public class FedoraRequest {
 					throw new IllegalArgumentException("Method not supported");
 			}
 		} catch(UniformInterfaceException e) {
-			throw new FedoraException("Fedora says:" + e.getResponse().getEntity(String.class), e);
+			throw new FedoraException("<<<Fedora says:\n" + e.getResponse().getEntity(String.class) + "\n>>>", e);
 		}
 		
 		return result;
