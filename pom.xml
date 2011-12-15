@@ -13,6 +13,17 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
+	<distributionManagement>
+		<downloadUrl>http://da-nrw-vm4.hki.uni-koeln.de/maven/</downloadUrl>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>da-nrw-maven-repo</id>
+			<name>DA-NRW Maven Repository</name>
+			<url>scp://da-nrw-vm4.hki.uni-koeln.de/mvn/</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
 
 	<dependencies>
 		<dependency>
