@@ -174,5 +174,27 @@ public class FedoraTests {
 		fedora.purgeObject().param("pid","test:1234").execute();
 		
 	}
+	
+	@Test
+	public void testGetDatastream() throws FedoraException {
+		
+		try {
+			fedora.ingest().param("pid","test:1234").execute();
+		} catch (FedoraException e) {
+			// do nothing, object probably already exists in fedora
+		}
+		
+		fedora.addDatastream().param("pid","test:1234")
+				.param("dsID","test-data")
+				.param("mimeType", "text/xml")
+				.execute(new File("src/test/resources/test_data.xml"));
+		
+		String result = fedora.getDatastreamDissemination().param("pid","test:1234")
+			.param("dsID","test-data").execute();
+		System.out.println(result);
+
+		fedora.purgeObject().param("pid","test:1234").execute();
+		
+	}
 
 }

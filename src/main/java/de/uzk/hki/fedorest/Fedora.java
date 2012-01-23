@@ -50,5 +50,9 @@ public class Fedora {
 	public FedoraRequest purgeDatastream() {
 		return new FedoraRequest(client,fedoraUrl,"/objects/${pid}/datastreams/${dsID}",FedoraRequest.HttpMethod.DELETE);
 	}
+	
+	public FedoraRequest getDatastreamDissemination() {
+		return new FedoraRequest(client,fedoraUrl,"/objects/${pid}/datastreams/${dsID}/content",FedoraRequest.HttpMethod.GET);
+	}
 
 }
