@@ -44,7 +44,7 @@ public class FedoraRequest {
 		return execute(null);
 	}
 	
-	public String execute(File content) throws FedoraException {
+	public String execute(Object content) throws FedoraException {
 		
 		String tempMethod = new String(method);
 		
