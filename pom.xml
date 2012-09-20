@@ -4,7 +4,7 @@
 
 	<groupId>de.uzk.hki</groupId>
 	<artifactId>fedorest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>fedorest</name>
@@ -15,12 +15,12 @@
 	</properties>
 	
 	<distributionManagement>
-		<downloadUrl>http://da-nrw-vm4.hki.uni-koeln.de/maven/</downloadUrl>
+		<downloadUrl>http://repositories.hki.uni-koeln.de/mvn/</downloadUrl>
 		<repository>
 			<uniqueVersion>false</uniqueVersion>
 			<id>da-nrw-maven-repo</id>
 			<name>DA-NRW Maven Repository</name>
-			<url>scp://da-nrw-vm4.hki.uni-koeln.de/mvn/</url>
+			<url>scp://repositories.hki.uni-koeln.de/repositories/mvn/</url>
 			<layout>default</layout>
 		</repository>
 	</distributionManagement>

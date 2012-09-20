@@ -190,7 +190,7 @@ public class FedoraTests {
 				.execute(new File("src/test/resources/test_data.xml"));
 		
 		String result = fedora.getDatastreamDissemination().param("pid","test:1234")
-			.param("dsID","test-data").execute();
+			.param("dsID","test-data").execute().getContent();
 		System.out.println(result);
 
 		fedora.purgeObject().param("pid","test:1234").execute();

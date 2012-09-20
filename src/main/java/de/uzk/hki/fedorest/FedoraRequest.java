@@ -1,6 +1,5 @@
 package de.uzk.hki.fedorest;
 
-import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -40,11 +39,11 @@ public class FedoraRequest {
 		return this;
 	}
 	
-	public String execute() throws FedoraException {
+	public FedoraResult execute() throws FedoraException {
 		return execute(null);
 	}
 	
-	public String execute(Object content) throws FedoraException {
+	public FedoraResult execute(Object content) throws FedoraException {
 		
 		String tempMethod = new String(method);
 		
@@ -62,21 +61,26 @@ public class FedoraRequest {
 		WebResource resource = client.resource(requestUrl);
 		resource = resource.queryParams(this.params);
 		
-		String result = null;
+		String resultContent = null;
+		int resultStatus = 0;
 		
 		try {		
 			switch(httpMethod) {
 				case GET:
-					result = resource.get(String.class);
+					resultContent = resource.get(String.class);
+					resultStatus = resource.head().getStatus();
 					break;
 				case POST:
-					result = resource.post(String.class,content);
+					resultContent = resource.post(String.class,content);
+					resultStatus = resource.head().getStatus();
 					break;
 				case PUT:
-					result = resource.put(String.class,content);
+					resultContent = resource.put(String.class,content);
+					resultStatus = resource.head().getStatus();
 					break;
 				case DELETE:
-					result = resource.delete(String.class);
+					resultContent = resource.delete(String.class);
+					resultStatus = resource.head().getStatus();
 					break;
 				default:
 					throw new IllegalArgumentException("Method not supported");
@@ -85,7 +89,7 @@ public class FedoraRequest {
 			throw new FedoraException("<<<Fedora says:\n" + e.getResponse().getEntity(String.class) + "\n>>>", e);
 		}
 		
-		return result;
+		return new FedoraResult(resultStatus, resultContent);
 		
 	}
 
