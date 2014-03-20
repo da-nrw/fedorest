@@ -26,6 +26,10 @@ public class Fedora {
 	public FedoraRequest getObjectProfile() {
 		return new FedoraRequest(client,fedoraUrl,"/objects/${pid}", FedoraRequest.HttpMethod.GET);
 	}
+	
+	public FedoraRequest getObjectXML() {
+		return new FedoraRequest(client,fedoraUrl,"/objects/${pid}/objectXML", FedoraRequest.HttpMethod.GET);
+	}
 
 	public FedoraRequest modifyObject() {
 		return new FedoraRequest(client,fedoraUrl,"/objects/${pid}",FedoraRequest.HttpMethod.PUT);
